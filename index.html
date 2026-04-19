@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Undangan Pernikahan Digital Paskal & Nita — Sabtu, 25 April 2026. Dengan penuh kebahagiaan kami mengundang Anda untuk turut merayakan momen istimewa kami." />
+  <title>Undangan Pernikahan | Paskal & Nita — 25 April 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+</head>
+<body>
+
+  <!-- ====================== ENVELOPE INTRO ====================== -->
+  <div id="envelope-overlay" class="envelope-overlay" aria-label="Buka Undangan">
+    <div class="envelope-container">
+      <div class="envelope-glow"></div>
+      <div class="env-deco-top">✦</div>
+      <p class="env-label">Undangan Pernikahan</p>
+      <h2 class="env-names">Paskal<span> & </span>Nita</h2>
+      <p class="env-date">Sabtu, 25 April 2026</p>
+      <div class="env-recipient">
+        <p>Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+        <h3 id="guest-name">Tamu Undangan</h3>
+      </div>
+      <button id="open-btn" class="open-btn" onclick="openInvitation()">
+        <span class="btn-icon"><i class="fa-solid fa-envelope-open-text"></i></span>
+        <span>Buka Undangan</span>
+      </button>
+      <p class="env-scroll-hint">Ketuk untuk membuka</p>
+    </div>
+    <!-- Floating petals on envelope screen -->
+    <div class="env-petals" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- ====================== MAIN CONTENT ====================== -->
+  <main id="main-content" class="main-content hidden" aria-label="Undangan Pernikahan Paskal dan Nita">
+
+    <!-- ── MUSIC PLAYER ── -->
+    <div id="music-player" class="music-player" title="Putar / Jeda Musik">
+      <audio id="bg-music" loop>
+        <source src="bg-music.mp3" type="audio/mpeg" />
+      </audio>
+      <button id="music-btn" class="music-btn" onclick="toggleMusic()" aria-label="Putar musik">
+        <i id="music-icon" class="fa-solid fa-music"></i>
+      </button>
+      <div class="music-wave" id="music-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- ── FLOATING PETALS ── -->
+    <div class="petals" aria-hidden="true">
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div><div class="petal"></div><div class="petal"></div>
+    </div>
+
+    <!-- ====================================================
+         SECTION 1 — HERO
+    ===================================================== -->
+    <section id="hero" class="hero section">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="hero-pre">— Undangan Pernikahan —</p>
+        <div class="hero-divider-small"></div>
+        <h1 class="hero-title">
+          <span class="name-groom">Paskal</span>
+          <span class="ampersand">&amp;</span><br>
+          <span class="name-bride">Nita</span>
+        </h1>
+        <div class="hero-divider-ornament">✦ ✦ ✦</div>
+        <p class="hero-date-text">Sabtu, 25 April 2026</p>
+        <!-- <p class="hero-location-text"><i class="fa-solid fa-location-dot"></i> Jl. Paniai-Koya Barat, Jayapura</p> -->
+        <a href="#acara" class="hero-cta-btn scroll-link">
+          Lihat Detail <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+      <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 2 — AYAT SUCI
+    ===================================================== -->
+    <section id="quote" class="quote-section section">
+      <div class="quote-decor quote-decor-left" aria-hidden="true">"</div>
+      <div class="quote-decor quote-decor-right" aria-hidden="true">"</div>
+      <div class="container reveal">
+        <div class="section-badge">Firman Tuhan</div>
+        <blockquote class="bible-verse">
+          Kasih itu sabar; kasih itu murah hati; ia tidak cemburu. Kasih tidak memegahkan diri dan tidak sombong. Ia tidak mencari keuntungan diri sendiri. Ia menutupi segala sesuatu, percaya segala sesuatu, mengharapkan segala sesuatu, sabar menanggung segala sesuatu.
+        </blockquote>
+        <cite class="bible-ref">— 1 Korintus 13:4-7</cite>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 3 — PROFIL MEMPELAI
+    ===================================================== -->
+    <section id="profil" class="couple-section section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">Mempelai</div>
+          <h2 class="section-title">Dengan Penuh Kebahagiaan</h2>
+          <p class="section-sub">Kami yang akan bersatu dalam ikatan suci pernikahan</p>
+        </div>
+
+        <div class="couple-grid">
+          <!-- Groom -->
+          <div class="profile-card groom-card reveal">
+            <div class="profile-icon-wrap">
+              <div class="profile-icon"><i class="fa-solid fa-user-tie"></i></div>
+              <div class="profile-ring"></div>
+            </div>
+            <div class="profile-label">Mempelai Pria</div>
+            <h3 class="profile-name">Paskal</h3>
+            <p class="profile-full-name">Paskalius A. Merahabia, S.P., M.P.</p>
+            <div class="profile-divider"></div>
+            <p class="profile-parents-label">Putra dari</p>
+            <p class="profile-parents">
+              Bapak Mikhael Merahabia<br />
+              &amp; Ibu Sarah Yukti
+            </p>
+          </div>
+
+          <!-- Connector -->
+          <div class="couple-connector reveal">
+            <div class="connector-line"></div>
+            <div class="connector-heart">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <div class="connector-line"></div>
+          </div>
+
+          <!-- Bride -->
+          <div class="profile-card bride-card reveal">
+            <div class="profile-icon-wrap">
+              <div class="profile-icon"><i class="fa-solid fa-user"></i></div>
+              <div class="profile-ring"></div>
+            </div>
+            <div class="profile-label">Mempelai Wanita</div>
+            <h3 class="profile-name">Nita</h3>
+            <p class="profile-full-name">Yunita Demena, S.P.</p>
+            <div class="profile-divider"></div>
+            <p class="profile-parents-label">Putri dari</p>
+            <p class="profile-parents">
+              Bapak (Alm.) Andris Demena<br />
+              &amp; Ibu Oktovina Simat
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 4 — COUNTDOWN
+    ===================================================== -->
+    <section id="countdown" class="countdown-section section">
+      <div class="container reveal">
+        <div class="section-badge light">Menghitung Hari</div>
+        <p class="countdown-tagline">Hari istimewa kami semakin dekat…</p>
+        <div class="countdown-grid" id="countdown-grid">
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-days">00</div>
+            <div class="countdown-label">Hari</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-hours">00</div>
+            <div class="countdown-label">Jam</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-minutes">00</div>
+            <div class="countdown-label">Menit</div>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <div class="countdown-value" id="cd-seconds">00</div>
+            <div class="countdown-label">Detik</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 5 — DETAIL ACARA
+    ===================================================== -->
+    <section id="acara" class="events-section section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">Acara</div>
+          <h2 class="section-title">Detail Acara</h2>
+          <p class="section-sub">Kami berharap Anda dapat turut hadir dan memberikan doa restu</p>
+        </div>
+
+        <div class="events-grid">
+          <!-- Pemberkatan -->
+          <div class="event-card reveal">
+            <div class="event-icon-wrap">
+              <i class="fa-solid fa-church event-icon"></i>
+            </div>
+            <div class="event-badge">Pemberkatan Nikah</div>
+            <div class="event-details">
+              <div class="event-row">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Sabtu, 25 April 2026</span>
+              </div>
+              <div class="event-row">
+                <i class="fa-regular fa-clock"></i>
+                <span>10.00 WIT — Selesai</span>
+              </div>
+              <div class="event-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Gedung Gereja GKI Kanaan<br />Koya Barat</span>
+              </div>
+            </div>
+            <a id="maps-church" href="https://maps.app.goo.gl/7tsrKximpBe74JiK9" target="_blank" rel="noopener" class="event-map-btn">
+              <i class="fa-solid fa-map-location-dot"></i> Buka Maps
+            </a>
+          </div>
+
+          <!-- Resepsi -->
+          <div class="event-card reveal">
+            <div class="event-icon-wrap">
+              <i class="fa-solid fa-champagne-glasses event-icon"></i>
+            </div>
+            <div class="event-badge">Resepsi Pernikahan</div>
+            <div class="event-details">
+              <div class="event-row">
+                <i class="fa-regular fa-calendar-days"></i>
+                <span>Sabtu, 25 April 2026</span>
+              </div>
+              <div class="event-row">
+                <i class="fa-regular fa-clock"></i>
+                <span>14.00 WIT — Selesai</span>
+              </div>
+              <div class="event-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Kediaman Kel. Bpk. Mikhael Merahabia<br />Jl. Paniai-Koya Barat, Jayapura</span>
+              </div>
+            </div>
+            <a id="maps-reception" href="https://maps.app.goo.gl/9N2uiXcAyX7DBV6KA" target="_blank" rel="noopener" class="event-map-btn">
+              <i class="fa-solid fa-map-location-dot"></i> Buka Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Dress Code -->
+        <!-- <div class="dresscode-card reveal">
+          <i class="fa-solid fa-shirt dresscode-icon"></i>
+          <div>
+            <div class="dresscode-title">Dress Code Tamu</div>
+            <div class="dresscode-text">Formal / Semi-Formal · Hindari warna putih penuh</div>
+          </div>
+        </div>
+      </div> -->
+    </section>
+
+    <!-- ====================================================
+         SECTION 6 — ADD TO CALENDAR
+    ===================================================== -->
+    <section id="kalender" class="calendar-section section">
+      <div class="container reveal">
+        <div class="section-badge light">Jangan Terlewat</div>
+        <h2 class="calendar-title">Simpan Tanggalnya</h2>
+        <p class="calendar-sub">Tandai kalender Anda dan atur pengingat untuk hari spesial kami.</p>
+        <a id="add-cal-btn"
+           href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:Pernikahan%20Paskal%20%26%20Nita%0ADTSTART:20260425T010000Z%0ADTEND:20260425T090000Z%0ALOCATION:Jl.%20Paniai-Koya%20Barat%2C%20Jayapura%0ADESCRIPTION:Pemberkatan%20Nikah%2010.00%20WIT%20dan%20Resepsi%2014.00%20WIT%0AEND:VEVENT%0AEND:VCALENDAR"
+           download="Pernikahan_Paskal_Nita.ics"
+           class="cal-btn">
+          <i class="fa-regular fa-calendar-plus"></i> Tambah ke Kalender
+        </a>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 7 — GALERI (Placeholder Foto)
+    ===================================================== -->
+    <section id="galeri" class="gallery-section section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">Momen Kami</div>
+          <h2 class="section-title">Galeri Foto</h2>
+          <p class="section-sub">Sekilas perjalanan cinta yang membawa kami ke hari ini</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal g-tall">
+            <div class="gallery-placeholder"><img src="WhatsApp Image 2026-04-01 at 11.43.20.jpeg" alt=""></div>
+            <div class="gallery-overlay"><span>Momen Kita</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <div class="gallery-placeholder"><img src="WhatsApp Image 2026-04-01 at 11.55.29.jpeg" alt=""></div>
+            <div class="gallery-overlay"><span>Bersama</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <div class="gallery-placeholder"><img src="WhatsApp Image 2026-04-07 at 11.52.05.jpeg"></div>
+            <div class="gallery-overlay"><span>Kenangan</span></div>
+          </div>          
+          <div class="gallery-item reveal">
+            <div class="gallery-placeholder"><img src="WhatsApp Image 2026-04-01 at 11.56.21.jpeg"></div>
+            <div class="gallery-overlay"><span>Keluarga</span></div>
+          </div>
+          <!-- <div class="gallery-item reveal g-wide">
+            <div class="gallery-placeholder"><i class="fa-solid fa-ring"></i></div>
+            <div class="gallery-overlay"><span>Pranikah</span></div> -->
+          </div>
+          <div class="gallery-item reveal">
+            <div class="gallery-placeholder"><img src="WhatsApp Image 2026-04-01 at 11.55.30.jpeg" alt=""></div>
+            <div class="gallery-overlay"><span>Cinta Kita</span></div>
+          </div>
+        </div>
+        <!-- <p class="gallery-note reveal">
+          <i class="fa-solid fa-circle-info"></i> Foto akan diperbarui mendekati hari H
+        </p> -->
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 8 — RSVP
+    ===================================================== -->
+    <section id="rsvp" class="rsvp-section section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge light">Konfirmasi</div>
+          <h2 class="section-title">KEHADIRAN</h2>
+          <p class="section-sub">Kehadiran Anda sangat berarti bagi kami. Mohon konfirmasi kehadiran Anda sebelum <strong>22 April 2026</strong>.</p>
+        </div>
+        <form class="rsvp-form reveal" id="rsvp-form" onsubmit="submitRSVP(event)">
+          <div class="form-group">
+            <label for="rsvp-name" class="form-label"><i class="fa-regular fa-user"></i> Nama Lengkap</label>
+            <input type="text" id="rsvp-name" class="form-input" placeholder="Masukkan nama lengkap Anda" required />
+          </div>
+          <div class="form-group">
+            <label for="rsvp-phone" class="form-label"><i class="fa-solid fa-phone"></i> No. WhatsApp</label>
+            <input type="tel" id="rsvp-phone" class="form-input" placeholder="08xx-xxxx-xxxx" />
+          </div>
+          <div class="form-group">
+            <label for="rsvp-guests" class="form-label"><i class="fa-solid fa-users"></i> Jumlah Tamu</label>
+            <select id="rsvp-guests" class="form-input form-select">
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+              <option value="4">4 Orang</option>
+              <option value="5+">5+ Orang</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><i class="fa-regular fa-circle-check"></i> Konfirmasi Kehadiran</label>
+            <div class="radio-group">
+              <label class="radio-label" for="hadir">
+                <input type="radio" id="hadir" name="attendance" value="hadir" checked />
+                <span class="radio-custom"></span>
+                <span class="radio-text"><i class="fa-solid fa-circle-check"></i> Dengan Senang Hati Hadir</span>
+              </label>
+              <label class="radio-label" for="tidak-hadir">
+                <input type="radio" id="tidak-hadir" name="attendance" value="tidak" />
+                <span class="radio-custom"></span>
+                <span class="radio-text"><i class="fa-solid fa-circle-xmark"></i> Mohon Maaf, Berhalangan</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="rsvp-message" class="form-label"><i class="fa-regular fa-message"></i> Pesan &amp; Doa untuk Kami</label>
+            <textarea id="rsvp-message" class="form-input form-textarea" placeholder="Tuliskan ucapan selamat, doa, atau pesan indah Anda untuk kami…" rows="4"></textarea>
+          </div>
+          <button type="submit" class="rsvp-submit-btn" id="rsvp-submit">
+            <i class="fa-solid fa-paper-plane"></i> Kirim Konfirmasi
+          </button>
+        </form>
+
+        <!-- Success Message -->
+        <div class="rsvp-success hidden" id="rsvp-success">
+          <div class="success-icon"><i class="fa-solid fa-heart"></i></div>
+          <h3>Terima Kasih!</h3>
+          <p>Konfirmasi kehadiran Anda telah kami terima. Kami sangat menantikan kehadiran Anda di hari istimewa kami. 🙏</p>
+        </div>
+
+        <!-- Ucapan Live Wall -->
+        <div class="wishes-wall reveal" id="wishes-wall">
+          <div class="wishes-header">
+            <h3 class="wishes-title">
+              <i class="fa-solid fa-comments"></i>
+              Ucapan &amp; Doa
+              <span class="wishes-count-badge" id="wishes-count">0</span>
+            </h3>
+            <div class="wishes-live-dot" title="Update otomatis">
+              <span class="live-pulse"></span>
+              <span class="live-label">LIVE</span>
+            </div>
+          </div>
+          <p class="wishes-desc">Ucapan semua tamu tersimpan dan bisa dilihat bersama secara real-time 💌</p>
+
+          <!-- Filter tabs -->
+          <div class="wishes-filter" id="wishes-filter">
+            <button class="filter-btn active" data-filter="all" onclick="filterWishes('all')">Semua</button>
+            <button class="filter-btn" data-filter="hadir" onclick="filterWishes('hadir')">
+              <i class="fa-solid fa-circle-check"></i> Hadir
+            </button>
+            <button class="filter-btn" data-filter="tidak" onclick="filterWishes('tidak')">
+              <i class="fa-solid fa-circle-xmark"></i> Berhalangan
+            </button>
+          </div>
+
+          <!-- Skeleton loading -->
+          <div class="wishes-skeleton" id="wishes-skeleton">
+            <div class="skeleton-card"><div class="sk-line sk-name"></div><div class="sk-line sk-msg"></div><div class="sk-line sk-msg short"></div></div>
+            <div class="skeleton-card"><div class="sk-line sk-name"></div><div class="sk-line sk-msg"></div></div>
+            <div class="skeleton-card"><div class="sk-line sk-name"></div><div class="sk-line sk-msg"></div><div class="sk-line sk-msg short"></div></div>
+          </div>
+
+          <div class="wishes-list" id="wishes-list" style="display:none">
+            <!-- Populated by Firebase -->
+          </div>
+
+          <!-- Firebase not configured notice -->
+          <div class="firebase-notice hidden" id="firebase-notice">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>Mode offline — isi <code>firebase-config.js</code> untuk aktifkan real-time cloud.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 9 — HADIAH / GIFT
+    ===================================================== -->
+    <section id="hadiah" class="gift-section section">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-badge">Tanda Kasih</div>
+          <h2 class="section-title">Kirim Hadiah</h2>
+          <p class="section-sub">Doa dan kehadiran Anda sudah lebih dari cukup bagi kami. Namun bagi yang ingin memberikan tanda kasih, berikut kami sediakan kemudahannya.</p>
+        </div>
+
+        <div class="gift-cards-grid">
+          <!-- Bank Transfer -->
+          <div class="gift-card reveal">
+            <div class="gift-card-icon"><i class="fa-solid fa-building-columns"></i></div>
+            <div class="gift-card-title">Transfer Bank</div>
+            <div class="gift-bank-info">
+              <div class="bank-row"><span class="bank-lbl">Bank</span><span class="bank-val">BRI</span></div>
+              <div class="bank-row"><span class="bank-lbl">No. Rek</span><span class="bank-val" id="rek-number">1234-5678-9012</span></div>
+              <div class="bank-row"><span class="bank-lbl">Atas Nama</span><span class="bank-val">Paskalius A. Merahabia</span></div>
+            </div>
+            <button class="copy-btn" id="copy-rek-btn" onclick="copyRek()" aria-label="Salin nomor rekening">
+              <i class="fa-regular fa-copy"></i> Salin Nomor
+            </button>
+          </div>
+
+          <!-- Hadiah Digital -->
+          <div class="gift-card reveal">
+            <div class="gift-card-icon"><i class="fa-solid fa-gift"></i></div>
+            <div class="gift-card-title">Hadiah Fisik</div>
+            <p class="gift-card-desc">Kirimkan hadiah fisik ke alamat acara kami:</p>
+            <div class="gift-address">
+              Kediaman Kel. Bpk. Mikhael Merahabia<br />
+              Jl. Paniai-Koya Barat<br />
+              Jayapura, Papua
+            </div>
+          </div>
+        </div>
+
+        <p class="gift-note reveal">
+          <i class="fa-solid fa-heart"></i>
+          Atas perhatian dan kemurahan hati Bapak/Ibu/Saudara/i, kami mengucapkan terima kasih yang sebesar-besarnya. Tuhan memberkati.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================
+         SECTION 10 — PENUTUP
+    ===================================================== -->
+    <section id="penutup" class="closing-section section">
+      <div class="closing-bg"></div>
+      <div class="container reveal">
+        <div class="closing-ornament" aria-hidden="true">✦</div>
+        <h2 class="closing-title">Paskal &amp; Nita</h2>
+        <div class="closing-divider">✦ ✦ ✦</div>
+        <p class="closing-message">
+          Merupakan suatu kehormatan dan kebahagiaan yang tak terhingga bagi kami dan keluarga,
+          apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu dalam momen
+          paling berharga sepanjang hidup kami.<br /><br />
+          Dengan penuh cinta dan kerendahan hati,
+          kami mohon maaf apabila terdapat kekurangan dalam penyampaian undangan ini.
+        </p>
+        <div class="closing-signature">
+          <span class="sig-names">Paskal &amp; Nita</span>
+          <span class="sig-family">Bersama kedua keluarga besar</span>
+        </div>
+        <div class="closing-cta-group">
+          <a href="#rsvp" class="closing-btn primary scroll-link">
+            <i class="fa-solid fa-envelope-open-text"></i> Konfirmasi Hadir
+          </a>
+          <button class="closing-btn secondary" onclick="shareInvitation()" id="share-btn">
+            <i class="fa-solid fa-share-nodes"></i> Bagikan Undangan
+          </button>
+        </div>
+        <div class="closing-footer-text">
+          <i class="fa-solid fa-cross"></i>
+          Tuhan Yesus Memberkati
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Made with <i class="fa-solid fa-heart"></i> for Paskal &amp; Nita · 25 April 2026</p>
+    </footer>
+
+  </main><!-- end #main-content -->
+
+  <script src="script.js"></script>
+</body>
+</html>
